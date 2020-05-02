@@ -64,11 +64,17 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        google: {
-          families: ["Abril Fatface", "Poppins:100,400,700"],
-        },
+        fonts: [
+          {
+            family: `Abril Fatface`,
+          },
+          {
+            family: `Poppins`,
+            variants: [`100`, `400`, `700`]
+          },
+        ],
       },
     },
     {
