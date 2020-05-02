@@ -1,0 +1,8 @@
+- Add sorting to portfolio
+- Style Form
+- Hook up form to Netlify
+- Add Social media links to footer
+- Add tech icons to home tech section
+- Develop portfolio detail
+- Add more videos to hero
+- Fix sticky header
