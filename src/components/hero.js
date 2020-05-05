@@ -2,7 +2,27 @@ import React from 'react'
 import styled from 'styled-components'
 import DogMp4 from "../images/hero-video.mp4"
 
-const HeroWrapper = styled.div`
+const Hero = (props) => {
+    return (
+        <HeroWrapper>
+            <HeroVideo>
+                <video muted loop autoPlay>
+                    <source src={DogMp4} type="video/mp4" />
+                    {/* <source src={DogOgg} type="video/ogg" /> */}
+                </video>
+            </HeroVideo>
+            <HeroContent>
+                <HeroTitle>Hey, I'm Lee</HeroTitle>
+                <HeroSubTitle>I'm a <span>Front End</span> Guy</HeroSubTitle>
+            </HeroContent>
+            <HeroMore>Don't Go There's More</HeroMore>
+        </HeroWrapper>
+    )
+}
+
+export default Hero;
+
+const HeroWrapper = styled.div `
     background-color: var(--primary-color);
     height: 100vh;
     overflow: hidden;
@@ -11,7 +31,7 @@ const HeroWrapper = styled.div`
     width: 100%;
     z-index: 10;
 `
-const HeroVideo = styled.div`
+const HeroVideo = styled.div `
     video {
         bottom: 0;
         filter: brightness(1.1);
@@ -36,15 +56,23 @@ const HeroVideo = styled.div`
             }
     }
 `
-const HeroContent = styled.div`
+const HeroContent = styled.div `
+    display: flex;
+    flex-direction: column;
     height: 100%;
     overflow: hidden;
     position: relative;
     z-index: 2;
-    
-    @media(min-width: 768px){
-        display: flex;
-        flex-direction: column;
+
+    @media(max-width: 599px) {
+        padding-top: 20vh;
+    }
+
+    @media (max-width: 767px){
+        align-items: center;
+    }
+
+    @media(min-width: 600px){
         justify-content: center;
     }
 
@@ -53,21 +81,23 @@ const HeroContent = styled.div`
         width: 600px;
     }
 `
-const HeroTitle = styled.h1`
+const HeroTitle = styled.h1 `
     color: rgba(0,0,0,0.5);
     margin: 0 0 0.25em 0;
-    font-family: 'Abril Fatface', Cursive;
-    font-size: 5rem;
+    font-size: 18vw;
     line-height: 1.1em;
+    margin: 0;
+    text-transform: uppercase;
 
     @media (min-width: 768px){
-        font-size: 10rem;
+        font-size: 12rem;
     }
 `
-const HeroSubTitle = styled.p`
+const HeroSubTitle = styled.p `
     color: rgba(255,255,255,0.5);
     margin: 0;
-    font-size: 3rem;
+    
+    font-size: 7.5vw;
     line-height: 1.1em;
     
     @media (min-width: 768px){
@@ -75,27 +105,7 @@ const HeroSubTitle = styled.p`
     }
 
     span {
-        font-weight: 700;
+        font-weight: 900;
     }
 `
-const HeroMore = styled.div``
-
-const Hero = (props) => {
-    return (
-        <HeroWrapper>
-            <HeroVideo>
-                <video muted loop autoPlay>
-                    <source src={DogMp4} type="video/mp4" />
-                    {/* <source src={DogOgg} type="video/ogg" /> */}
-                </video>
-            </HeroVideo>
-            <HeroContent>
-                <HeroTitle>Hey, I'm Lee</HeroTitle>
-                <HeroSubTitle>I'm a <span>Front End</span> Guy</HeroSubTitle>
-            </HeroContent>
-            <HeroMore>Don't Go There's More</HeroMore>
-        </HeroWrapper>
-    )
-}
-
-export default Hero;
+const HeroMore = styled.div ``

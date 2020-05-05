@@ -5,6 +5,8 @@ const Container = styled.div `
     margin-right: auto;
     ${props => props.gutter ? 'padding-left: 1.5rem; padding-right: 1.5rem;' : '' }
     max-width: ${props => props.half ? '600px' : '1200px' };
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     width: 100%;
 `
 

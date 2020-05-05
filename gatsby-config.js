@@ -5,21 +5,21 @@ module.exports = {
     author: `@gatsbyjs`,
     menuLinks: [
       {
-        name: `Fav Tech`,
-        url: `/#tech`,
-      },
-      {
         name: `Experience`,
         url: `/#experience`,
       },
       {
-        name: `More Me`,
-        url: `/#about`,
+        name: `Fav Tech`,
+        url: `/#tech`,
       },
       {
-        name: `Reach Out`,
-        url: `/#contact`,
+        name: `Speaking`,
+        url: `/#speaking`,
       },
+      // {
+      //   name: `Reach Out`,
+      //   url: `/#contact`,
+      // },
     ],
   },
   plugins: [
@@ -35,6 +35,14 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: `${__dirname}/src/images` // See below to configure properly
+        }
+      }
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/portfolio`,
@@ -46,6 +54,13 @@ module.exports = {
       options: {
         path: `${__dirname}/src/portfolio/images`,
         name: "portfolio-piece-image",
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `portfolio-piece-video`,
+        path: `${__dirname}/src/portfolio/videos`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -63,20 +78,20 @@ module.exports = {
         icon: `src/images/face-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Abril Fatface`,
-          },
-          {
-            family: `Poppins`,
-            variants: [`100`, `400`, `700`]
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: `Oswald`,
+    //       },
+    //       {
+    //         family: `EB Garmond`,
+    //         variants: [`100`, `400`, `700`]
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -86,7 +101,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-anchor-links",
       options: {
-        offset: -0,
+        offset: -60,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

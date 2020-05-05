@@ -1,11 +1,54 @@
-import React, { useEffect, useRef, useState } from "react"
+import React from "react"
 import { useStaticQuery } from "gatsby"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 import styled from 'styled-components'
 import Container from './container'
+import Sticky from './sticky'
 
-const HeaderWrapper = styled.header`
+const Header = () => {
+  
+  const data = useStaticQuery(
+    graphql `
+        query SiteMetaData {
+          site {
+            siteMetadata {
+              menuLinks {
+                name
+                url
+              }
+            }
+          }
+        }
+      `
+  );
+  
+  const navLinks = data.site.siteMetadata.menuLinks;
+
+  return (
+    <Sticky scrollPoint={300}>
+      <HeaderWrapper>
+        <Container gutter>
+          <nav>
+            <NavLinks>
+              {navLinks.map(link => (
+              <NavItem key={link.url}>
+              <AnchorLink to={link.url}>
+                {link.name}
+              </AnchorLink>
+            </NavItem>
+          ))}
+            </NavLinks>
+          </nav>
+        </Container>
+      </HeaderWrapper>
+    </Sticky>
+  )
+}
+
+export default Header
+
+const HeaderWrapper = styled.header `
   background-color: transparent;
   font-size: 2rem;
   left: 0;
@@ -16,7 +59,7 @@ const HeaderWrapper = styled.header`
   width: 100%;
   z-index: 11;
 
-  &.is-sticky {
+  .is-sticky & {
     background-color: var(--primary-color);
     font-size: 1.6rem;
     padding: 1.5rem 0;
@@ -25,76 +68,26 @@ const HeaderWrapper = styled.header`
   }
 `
 
-const NavLinks = styled.ul`
-  color: #fff;
+const NavLinks = styled.ul `
   display: flex;
+  font-family: 'Oswald', sans-serif;
   justify-content: center;
   list-style-type: none;
   margin: 0;
+  text-transform: uppercase;
   padding: 0;
 
   a {
-    color: inherit;
+    color: rgba(255,255,255,0.5);
     text-decoration: none;
+    transition: color 0.25s ease-in-out;
+
+    &:hover {
+      color: rgba(255,255,255,1);
+    }
   }
 `
 
-const NavItem = styled.li`
- @media (min-width: 768px){
-    margin: 0 1.5rem;
- }
+const NavItem = styled.li `
+margin: 0 1.5rem;
 `
-
-const Header = () => {
-  const [isSticky, setSticky] = useState(false);
-  const ref = useRef(null);
-  const handleScroll = () => {
-    if (ref.current) {
-      setSticky(ref.current.getBoundingClientRect().top <= 0);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', () => handleScroll);
-    };
-  }, []);
-
-const data = useStaticQuery(
-  graphql `
-      query SiteMetaData {
-        site {
-          siteMetadata {
-            menuLinks {
-              name
-              url
-            }
-          }
-        }
-      }
-    `
-);
-  const navLinks = data.site.siteMetadata.menuLinks;
-
-  return (
-    <HeaderWrapper className={`${isSticky ? ' is-sticky' : ''}`} ref={ref}>
-      <Container gutter>
-        <nav>
-          <NavLinks>
-            {navLinks.map(link => (
-            <NavItem key={link.url}>
-            <AnchorLink to={link.url}>
-              {link.name}
-            </AnchorLink>
-          </NavItem>
-        ))}
-          </NavLinks>
-        </nav>
-      </Container>
-    </HeaderWrapper>
-  )
-}
-
-export default Header

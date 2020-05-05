@@ -1,8 +1,9 @@
-- Add sorting to portfolio
-- Style Form
-- Hook up form to Netlify
-- Add Social media links to footer
-- Add tech icons to home tech section
-- Develop portfolio detail
+## Fixes Needed
+
+- Fix node logo icon
+- Fix Google Fonts
+
+## Nice to haves
+
+- Add contact form
 - Add more videos to hero
-- Fix sticky header

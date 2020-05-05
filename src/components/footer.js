@@ -1,34 +1,33 @@
 import React from "react"
 import Container from './container'
-import Field from './field'
 import styled from 'styled-components'
+import SocialLinks from './socialLinks'
+
+const socials = [
+    {name:'linkedin', link: 'https://www.linkedin.com/in/lee-wise/'},
+    {name:'github', link: 'https://github.com/theleewise'},
+    {name:'stackoverflow', link: 'https://stackoverflow.com/users/800317/lee-wise'},
+    {name:'twitter', link: 'https://twitter.com/theleewise'}
+];
+
+const Footer = () => {
+    return (
+        <FooterWrapper>
+            <div id="contact"></div>
+            <Container gutter>
+                <SocialLinks items={socials} />
+            </Container>
+        </FooterWrapper>
+    )
+}
 
 const FooterWrapper = styled.footer`
     background-color: #333;
+    background: linear-gradient(45deg, #333, #111);
     color: #ddd;
     padding: 1.5rem;
-
-
+    text-align: center;
+    // min-height: calc(100vh - 6rem);
 `
-
-const Footer = () => (
-    <FooterWrapper>
-        <div id="contact"></div>
-        <Container gutter>
-            <form method="post" action="#">
-                <Field label={`Name`} type={`text`} required />
-                <Field label={`Email`} type={`email`} required />
-                
-                <div>
-                    <label>
-                        <span>Message</span>
-                        <textarea name="message" id="message" rows="5" />
-                    </label>
-                </div>
-                <button type="submit">Send</button>
-            </form>
-        </Container>
-    </FooterWrapper>
-)
 
 export default Footer

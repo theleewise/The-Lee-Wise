@@ -1,57 +1,9 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import PropsTypes from "prop-types"
+import PropTypes from "prop-types"
 import styled from 'styled-components'
 // import Slide from 'react-reveal/Slide';
 import Container from './container'
-
-const SplitWrapper = styled.div`
-    align-items: stretch;
-    background-color: #eee;
-    background: linear-gradient(45deg, #fff, #ddd);
-    display: flex;
-    flex-direction: ${props => props.flip ? 'row-reverse' : 'row'}; 
-    flex-wrap: wrap;
-    
-    > * {
-        flex: 1 0 100%;
-        
-        @media (min-width: 640px){
-            flex: 1;
-        }
-    }
-`
-    
-const SplitImage = styled.div`
-    clip-path: polygon(${props => props.flip ? 
-        '0 0, 100% 0, 100% 100%, 23% 100%'
-        : '0 0, 77% 0, 100% 100%, 0% 100%'
-    });
-
-    > * {
-        height: 100%;
-    }
-`
-
-const SplitBody = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    padding-bottom: 6rem;
-    padding-top: 6rem;
-    s
-    > * {
-        @media(min-width: 640px) {
-            margin-${props => props.flip ? 'right' : 'left'}: 0;
-            padding-${props => props.flip ? 'right' : 'left'}: 60px;
-        }
-    }
-`
-
-const SplitHeading = styled.h2`
-    color: var(--primary-color);
-`
 
 const Split = (props) => {
     return (
@@ -72,8 +24,60 @@ const Split = (props) => {
 }
 
 Split.propTypes = {
-    image: PropsTypes.object.isRequired,
-    flip: PropsTypes.bool,
+    image: PropTypes.object.isRequired,
+    flip: PropTypes.bool,
 }
 
 export default Split;
+const SplitWrapper = styled.div `
+    align-items: stretch;
+    background-color: #eee;
+    background: linear-gradient(45deg, #fff, #ddd);
+    display: flex;
+    flex-direction: ${props => props.flip ? 'row-reverse' : 'row'}; 
+    flex-wrap: wrap;
+    
+    > * {
+        flex: 1 0 100%;
+        
+        @media (min-width: 768px){
+            flex: 1;
+        }
+    }
+`
+
+const SplitImage = styled.div `
+    @media (min-width: 768px){
+        clip-path: polygon(${props => props.flip ? 
+            '0 0, 100% 0, 100% 100%, 23% 100%'
+            : '0 0, 77% 0, 100% 100%, 0% 100%'
+        });
+    }
+
+    > * {
+        height: 100%;
+    }
+`
+
+const SplitBody = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 12rem;
+    padding-top: 12rem;
+    s
+    > * {
+        @media(min-width: 768px) {
+            margin-${props => props.flip ? 'right' : 'left'}: 0;
+            padding-${props => props.flip ? 'right' : 'left'}: 60px;
+        }
+    }
+`
+
+const SplitHeading = styled.h2 `
+    color: var(--primary-color);
+    font-size: 3.8rem;
+    line-height: 1.1em;
+    text-transform: uppercase;
+`
