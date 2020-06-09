@@ -78,20 +78,16 @@ module.exports = {
         icon: `src/images/face-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       {
-    //         family: `Oswald`,
-    //       },
-    //       {
-    //         family: `EB Garmond`,
-    //         variants: [`100`, `400`, `700`]
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `oswald`,
+          `eb garmond\:100,400,700`
+        ],
+        // display: 'swap'
+      }
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
