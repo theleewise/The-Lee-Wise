@@ -1,8 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `TheLeeWise`,
+    description: `Check out Lee Wise, an experienced Front End Developer and Designer. Making designs work and code look good since 1999!`,
+    author: `@theleewise`,
+    url: `https://theleewise.com`, // No trailing slash allowed!
+    image: `/images/preview.jpg`,
     menuLinks: [
       {
         name: `Experience`,
