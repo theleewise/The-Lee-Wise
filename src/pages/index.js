@@ -70,13 +70,11 @@ const IndexPage = () => {
       <Section
         heading={`Experience`}
         subheading = {
-          `Coding for over 20 years! Yeah, you read that write.`
+          `Coding for over 20 years! Yeah, you read that right.`
         }
       >
          <p>
-           I
-          know you're thinking "This guy looks too young for that to be true!",
-          but it is.
+           I know you're thinking "This guy looks too young for that to be true!", but it is.
         </p>
         <p>
           That's because even before I was doing this professionally I was
@@ -121,11 +119,10 @@ const IndexPage = () => {
           I love all aspects of front end development and that includes talking
           about it and teaching others.
         </p>
-        <p>I 've spoken at 2 international conferences and 6 national onces</p>
+        <p>I've spoken at 2 international conferences and 6 national ones</p>
         <p>
-          I also know that I didn 't get where I am all alone but rather from
-          the help and guidance of others so I'm passionate about doing the same
-          for others
+          I also know that I didn't get where I am all alone but rather from
+          the help and guidance of others so I'm passionate about doing the same.
         </p>
         <p>
           I have extensive experience with training and guiding juinor
